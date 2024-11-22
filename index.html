@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <style>
+        button {
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            font-size: 20px;
+        }
+    </style>
+
+    <script>
+        var n1 = 0;
+        var n2 = 0;
+        var operador = "";
+
+        function btn_(parametro) {
+            // Verifica se o valor mostrado é 0 e substitui pelo primeiro número
+            if (document.getElementById("resultado").innerHTML == "0") {
+                document.getElementById("resultado").innerHTML = parametro;
+            } else {
+                document.getElementById("resultado").innerHTML += parametro;
+            }
+        }
+
+        function somar() {
+            operador = "+";
+            n1 = document.getElementById("resultado").innerHTML;
+            document.getElementById("resultado").innerHTML = 0;
+        }
+
+        function subtração() {
+            operador = "-";
+            n1 = document.getElementById("resultado").innerHTML;
+            document.getElementById("resultado").innerHTML = 0;
+        }
+
+        function divisão() {
+            operador = "/";
+            n1 = document.getElementById("resultado").innerHTML;
+            document.getElementById("resultado").innerHTML = 0;
+        }
+
+        function multiplicação() {
+            operador = "*";
+            n1 = document.getElementById("resultado").innerHTML;
+            document.getElementById("resultado").innerHTML = 0;
+        }
+
+        function limpar() {
+            n1 = 0;
+            n2 = 0;
+            operador = "";
+            document.getElementById("resultado").innerHTML = "0";
+        }
+
+        function resultar() {
+            n2 = document.getElementById("resultado").innerHTML;
+            // Realiza o cálculo dependendo do operador
+            if (operador == "+") {
+                document.getElementById("resultado").innerHTML = Number(n1) + Number(n2);
+            } else if (operador == "-") {
+                document.getElementById("resultado").innerHTML = Number(n1) - Number(n2);
+            } else if (operador == "*") {
+                document.getElementById("resultado").innerHTML = Number(n1) * Number(n2);
+            } else if (operador == "/") {
+                if (n2 == 0) {
+                    document.getElementById("resultado").innerHTML = "Error";
+                } else {
+                    document.getElementById("resultado").innerHTML = Number(n1) / Number(n2);
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <center>
+        <p id="resultado">0</p>
+
+        <div>
+            <button onclick="limpar()">C</button>
+            <button onclick="divisão()">/</button>
+            <button onclick="multiplicação()">x</button>
+            <button onclick="resultar()">=</button>
+        </div>
+
+        <div>
+            <button onclick="btn_(7)">7</button>
+            <button onclick="btn_(8)">8</button>
+            <button onclick="btn_(9)">9</button>
+            <button onclick="subtração()">-</button>
+        </div>
+
+        <div>
+            <button onclick="btn_(4)">4</button>
+            <button onclick="btn_(5)">5</button>
+            <button onclick="btn_(6)">6</button>
+            <button onclick="somar()">+</button>
+        </div>
+
+        <div>
+            <button onclick="btn_(1)">1</button>
+            <button onclick="btn_(2)">2</button>
+            <button onclick="btn_(3)">3</button>
+            <button onclick="btn_(0)">0</button>
+        </div>
+    </center>
+</body>
+
+</html>
